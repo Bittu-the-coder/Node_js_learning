@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Success</title>
+
+    <style>
+      .success-page {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        background-color: #f7f7f7;
+      }
+
+      .success-page h1 {
+        font-size: 36px;
+        color: #333;
+        margin-bottom: 20px;
+      }
+
+      .success-page p {
+        font-size: 18px;
+        color: #666;
+        margin-bottom: 20px;
+      }
+
+      .success-icon {
+        font-size: 48px;
+        color: #2ecc71;
+        margin-bottom: 20px;
+      }
+
+      .success-page button {
+        background-color: #4caf50;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      .success-page button:hover {
+        background-color: #3e8e41;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="success-page">
+      <h1>Thank you for submitting your information!</h1>
+      <p>We appreciate the time you took to provide us with your details.</p>
+      <p>
+        Your information has been successfully received and we will be in touch
+        with you soon.
+      </p>
+      <div class="success-icon">
+        <i class="fas fa-check-circle"></i>
+      </div>
+      <button onclick="window.location.href='/'">Return to Home</button>
+    </div>
+  </body>
+</html>

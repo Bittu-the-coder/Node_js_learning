@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add home</title>
+  </head>
+  <body>
+    <header>
+      <h1>Register your home here</h1>
+    </header>
+    <form action="/host/add-home" method="post">
+      <label for="home-name">Home Name:</label>
+      <input type="text" id="home-name" name="home-name" /><br /><br />
+      <label for="home-description">Home Description:</label>
+      <textarea id="home-description" name="home-description"></textarea
+      ><br /><br />
+      <label for="home-price">Home Price:</label>
+      <input type="number" id="home-price" name="home-price" /><br /><br />
+      <input type="submit" value="Register Home" />
+    </form>
+  </body>
+</html>

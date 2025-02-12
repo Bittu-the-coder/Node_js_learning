@@ -3,7 +3,7 @@ const mongo = require("mongodb");
 const MongoClient = mongo.MongoClient;
 
 const MONGO_URL =
-  "mongodb+srv://bittup:Bittu$138@cluster0.tifju.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
+  "mongodb+srv://bittup:Bittu138@cluster0.tifju.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
 
 let _db;
 

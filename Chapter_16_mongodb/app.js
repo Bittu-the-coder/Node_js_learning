@@ -25,7 +25,7 @@ app.use(express.static(path.join(rootDir, "public")));
 
 app.use(errorsController.pageNotFound);
 
-const PORT = 3004;
+const PORT = 3012;
 mongoConnect(() => {
   app.listen(PORT, () => {
     console.log(`Server running on address http://localhost:${PORT}`);

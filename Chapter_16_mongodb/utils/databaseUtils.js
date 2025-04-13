@@ -1,9 +1,7 @@
 require("dotenv").config();
 const mongo = require("mongodb");
 
-// const MongoClient = mongo.MongoClient;
-const MongoClient =
-  "mongodb+srv://bittup:Bittu138@cluster0.tifju.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
+const MongoClient = mongo.MongoClient;
 
 const MONGO_URL = process.env.MONGO_URI;
 
@@ -12,11 +10,12 @@ let _db;
 const mongoConnect = (callback) => {
   MongoClient.connect(MONGO_URL)
     .then((client) => {
+      console.log("Connected to MongoDB");
       _db = client.db("airbnb");
       callback();
     })
     .catch((err) => {
-      console.log("error while connecting to database", err);
+      console.log("Error while connecting to database:", err);
     });
 };
 

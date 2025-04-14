@@ -1,0 +1,18 @@
+<div class="flex gap-4 mb-4">
+  <% if(typeof errors !== 'undefined' && errors !== null && errors.length > 0 )
+  { %>
+  <div
+    class="w-full bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative"
+    role="alert"
+  >
+    <strong class="font-bold text-red-800">Error!</strong>
+    <span class="block sm:inline">
+      <ul class="list-disc list-inside">
+        <% errors.forEach(function(error) { %>
+        <li class="list-disc text-red-500"><%= error %></li>
+        <% }); %>
+      </ul>
+    </span>
+  </div>
+  <% } %>
+</div>

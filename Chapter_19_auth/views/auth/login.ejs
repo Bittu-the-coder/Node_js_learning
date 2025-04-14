@@ -1,0 +1,16 @@
+<%- include('../partials/head') %>
+  </head>
+  <body>
+    <%- include('../partials/nav') %>
+    <main class="container mx-auto mt-8 p-8 bg-white rounded-lg shadow-md">
+        <form action="/login" method="POST" class="max-w-md mx-auto">
+        <%- include('../partials/authErrors') %>
+        <input type="email" name="email" placeholder="Enter your Email" class="w-full px-4 py-2 mb-4 border rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 " required />
+        <input type="password" name="password" placeholder="Enter your Password" class="w-full px-4 py-2 mb-4 border rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"/>
+        <input type="submit" value="Login" required class="w-full bg-red-500 text-white py-2 rounded-md hover:bg-red-600 transition duration-300" />
+      </form>
+      <p class="text-center mt-6 self-center">Don't have an account? <a href="/register" class="text-red-500 hover:underline">Sign up</a></p>
+      
+    </main>
+  </body>
+</html>

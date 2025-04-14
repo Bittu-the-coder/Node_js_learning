@@ -1,4 +1,5 @@
 const Home = require("../models/home");
+const fs = require("fs")
 
 exports.getAddHome = (req, res, next) => {
   res.render("host/edit-home", {
@@ -44,15 +45,25 @@ exports.getHostHomes = (req, res, next) => {
 };
 
 exports.postAddHome = (req, res, next) => {
-  const { houseName, price, location, rating, photoUrl, description, id } =
+  const { houseName, price, location, rating, description, id } =
     req.body;
+  console.log(req.file)
+
+  if (!req.file) {
+    console.log("No file uploaded.");
+    return res.status(422).redirect("/host/add-home");
+    // return res.status(422).send("No file uploaded.");
+  }
+
+  const photo = req.file.path;
+
   const home = new Home(
     {
       houseName,
       price,
       location,
       rating,
-      photoUrl,
+      photo,
       description,
       id
     }
@@ -65,15 +76,25 @@ exports.postAddHome = (req, res, next) => {
 };
 
 exports.postEditHome = (req, res, next) => {
-  const { id, houseName, price, location, rating, photoUrl, description } =
+  const { id, houseName, price, location, rating, description } =
     req.body;
+
   Home.findById(id).then((home) => {
     home.houseName = houseName;
     home.price = price;
     home.location = location;
     home.rating = rating;
-    home.photoUrl = photoUrl;
     home.description = description;
+
+    if (req.file) {
+      fs.unlink(home.photo, (err) => {
+        if (err) {
+          console.log(err)
+        }
+      })
+      home.photo = req.file.path;
+    }
+
     home.save().then(() => {
       console.log("Home is updated successfully");
     }).catch((error) => {

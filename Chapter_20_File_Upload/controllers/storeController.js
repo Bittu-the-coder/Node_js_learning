@@ -1,5 +1,8 @@
 const Home = require("../models/home");
 const User = require("../models/user");
+const path = require("path");
+const rootDir = require("../utils/pathUtil");
+
 
 exports.getIndex = (req, res, next) => {
   console.log("Session: ", req.session);
@@ -92,3 +95,34 @@ exports.getHomeDetails = (req, res, next) => {
       res.redirect("/homes");
     });
 };
+
+
+exports.getRules = (req, res, next) => {
+  if (!req.session.isLoggedIn) {
+    return res.redirect("/login")
+  }
+  next();
+}
+
+// Download house rules PDF
+downloadRules: async (req, res, next) => {
+  try {
+    if (!req.session.isLoggedIn) {
+      return res.redirect("/login");
+    }
+
+    const homeId = req.params.homeId;
+    const rulesFileName = `HouseRules_${homeId}.pdf`;
+    const rulesFilePath = path.join(rootDir, "uploads", "rules", rulesFileName);
+
+    res.download(rulesFilePath, (err) => {
+      if (err) {
+        console.error("Error downloading file:", err);
+        req.flash("error", "Error downloading file");
+        return res.redirect(`/homes/${homeId}`);
+      }
+    });
+  } catch (error) {
+    next(error);
+  }
+}

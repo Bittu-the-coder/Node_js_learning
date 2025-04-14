@@ -28,8 +28,7 @@ app.use(errorsController.pageNotFound);
 
 const PORT = 3012;
 
-const DB_PATH =
-  "mongodb+srv://bittup:Bittu138@cluster0.tifju.mongodb.net/airbnb?retryWrites=true&w=majority&appName=Cluster0";
+const DB_PATH = process.env.MONGO_URI;
 
 
 mongoose.connect(DB_PATH)
